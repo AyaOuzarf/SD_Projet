@@ -1,7 +1,4 @@
-"""
-visualiseur.py - Version Corrigée
-Génère automatiquement le PNG après le .dot
-"""
+
 
 from noeud import NoeudHuffman
 from typing import Dict

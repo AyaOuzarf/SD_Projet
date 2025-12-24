@@ -1,7 +1,4 @@
-"""
-main.py - Version Corrigée
-Demande si l'utilisateur veut générer le graphique PNG
-"""
+
 
 from huffman import CompressionHuffman
 from affichage import Affichage
