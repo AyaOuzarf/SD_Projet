@@ -1,0 +1,7 @@
+Le codage de Huffman a été développé par David A. Huffman en 1952.
+C'est un algorithme de compression sans perte très efficace.
+Il est utilisé dans de nombreux formats de compression modernes.
+ZIP, JPEG, MP3 utilisent tous des variantes de l'algorithme de Huffman.
+La compression fonctionne en assignant des codes plus courts aux caractères fréquents.
+Les caractères rares reçoivent des codes plus longs.
+Cela optimise l'espace de stockage nécessaire.

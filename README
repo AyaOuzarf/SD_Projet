@@ -1,0 +1,175 @@
+# 🗜️ Projet Huffman - Guide Complet
+
+## 📖 Qu’est-ce que le codage Huffman ?
+
+Huffman est un **algorithme de compression sans perte**.
+Le principe : **les caractères fréquents ont des codes courts, les caractères rares ont des codes longs**.
+
+Exemple simple : `"AAABBC"`
+
+* ASCII normal : 6 lettres × 8 bits = 48 bits
+* Huffman : codes courts pour A (0), B (10), C (11) → 9 bits
+* **Gain** : 48 − 9 = 39 bits (~81%)
+
+
+## 🔑 Comprendre l’arbre et les codes binaires
+
+### Qu’est-ce qu’un arbre binaire ?
+
+C’est comme un **chemin de décision** :
+
+```
+        ROOT
+       /    \
+     LEFT   RIGHT
+      0       1
+```
+
+* Aller **à gauche** → écrire "0"
+* Aller **à droite** → écrire "1"
+
+---
+
+### Exemple avec 3 lettres : A, B, C
+
+Fréquences : A=5, B=3, C=2
+
+#### Étape 1 : Feuilles (lettres seules)
+
+```
+[A:5]  [B:3]  [C:2]
+```
+
+#### Étape 2 : Fusion des plus petites (B et C)
+
+```
+       [5]
+      /   \
+    [B:3] [C:2]
+
+[A:5] reste séparé
+```
+
+#### Étape 3 : Fusion avec A
+
+```
+            [10]  ← ROOT
+           /    \
+         [A:5]  [5]
+                /  \
+             [B:3] [C:2]
+```
+
+#### Codes finaux
+
+| Lettre | Fréquence | Chemin depuis ROOT | Code binaire |
+| ------ | --------- | ------------------ | ------------ |
+| A      | 5         | Left               | 0            |
+| B      | 3         | Right → Left       | 10           |
+| C      | 2         | Right → Right      | 11           |
+
+**Le chemin dans l’arbre = le code !**
+
+---
+
+### Exemple réel : `"je veux et j'exige d'exquises excuses"`
+
+* Lettres fréquentes → codes courts (ex : e → `00`)
+* Lettres rares → codes longs (ex : c → `111001`)
+* Résultat : moins de bits utilisés → compression efficace 📉
+
+---
+
+## 🎯 Étapes de traitement dans le programme
+
+1. **Analyse des fréquences**
+2. **Construction de l’arbre de Huffman**
+3. **Génération des codes binaires**
+4. **Encodage et décodage du texte**
+5. **Statistiques et visualisation** (ASCII et Graphviz)
+
+---
+
+## 🎮 Menu interactif
+
+### Menu principal
+
+Lancer le programme :
+
+```bash
+python main.py
+```
+
+Menu principal :
+
+```
+======================================================================
+                  🎮 MENU - CODAGE DE HUFFMAN
+======================================================================
+1. Exemple : Phrase du cours
+2. Exemple : Texte long
+3. Comparaison de textes
+4. Test complet sur fichier
+5. Gestion de fichiers (compression/décompression)
+6. Entrer votre propre texte
+0. Quitter
+```
+
+* Options 1-4 : exemples/tests automatiques
+* Option 5 : **sous-menu gestion fichiers**
+* Option 6 : encoder votre texte librement
+
+---
+
+### Sous-menu : Gestion de fichiers
+
+Accessible depuis le menu principal (option 5) :
+
+```
+📁 GESTION DE FICHIERS
+1. Compresser un fichier
+2. Décompresser un fichier
+3. Test complet (compression + décompression + vérification)
+4. Lister les fichiers .txt disponibles
+5. Nettoyer fichiers temporaires
+0. Retour au menu principal
+```
+
+* `0` → Retour au menu principal
+* Permet de gérer vos fichiers `.txt` et `.huff` facilement
+
+---
+
+## 📊 Visualisation et statistiques
+
+1. **Analyse des fréquences**
+2. **Table des codes**
+3. **Arbre ASCII**
+4. **Statistiques** : taille originale/compressée, gain, taux, facteur
+5. **Visualisation Graphviz** (`.dot`) :
+
+```bash
+dot -Tpng arbre_huffman.dot -o arbre_huffman.png
+```
+
+
+---
+
+## 📁 Structure du projet
+
+```
+projet-huffman/
+│
+├── noeud.py              # Structure de base (classe NoeudHuffman)
+├── analyseur.py          # Analyse des fréquences
+├── constructeur_arbre.py # Construction de l'arbre
+├── generateur_codes.py   # Génération des codes binaires
+├── encodeur.py           # Encodage/décodage
+├── statistiques.py       # Calculs statistiques
+├── visualiseur.py        # Visualisation de l'arbre
+├── affichage.py          # Affichage formaté
+├── gestion_fichiers.py   # Compression / Décompression de fichiers
+├── huffman.py            # Classe principale
+├── main.py               # Programme principal avec menu
+└── README.md             # Documentation complète
+```
