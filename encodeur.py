@@ -7,8 +7,8 @@ class Encodeur:
     @staticmethod
     def encoder(texte: str, codes: Dict[str, str]) -> str:
         """
-        Encode le texte en utilisant les codes de Huffman.
-        
+          transforme le texte original en une chaîne de 0 et 1,
+          en remplaçant chaque caractère par son code binaire correspondant        
         Args:
             texte: Le texte à encoder
             codes: Dictionnaire {caractère: code_binaire}

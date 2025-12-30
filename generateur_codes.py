@@ -7,7 +7,8 @@ class GenerateurCodes:
     @staticmethod
     def generer(racine: NoeudHuffman) -> Dict[str, str]:
         """
-        Génère les codes binaires pour chaque caractère.
+        associer un code binaire à chaque caractère.
+
         
         Args:
             racine: La racine de l'arbre de Huffman
@@ -27,6 +28,8 @@ class GenerateurCodes:
                 return
             
             # Sinon, continuer le parcours
+            #aller à gauche ajoute 0 au code,
+            #aller à droite ajoute 1 au code,
             parcourir(noeud.gauche, code_actuel + '0')
             parcourir(noeud.droite, code_actuel + '1')
         

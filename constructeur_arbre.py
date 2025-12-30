@@ -24,7 +24,7 @@ class ConstructeurArbre:
             racine.gauche = NoeudHuffman(caractere, freq)
             return racine
         
-        # Créer un min-heap avec un nœud par caractère
+        # Créer un min-heap (sélectionner les deux caractères ayant les plus petites fréquences)
         heap = []
         for caractere, freq in frequences.items():
             noeud = NoeudHuffman(caractere, freq)
@@ -33,7 +33,7 @@ class ConstructeurArbre:
         historique = []
         iteration = 1
         
-        # Fusionner les nœuds jusqu'à n'en avoir qu'un
+        # Fusionner les nœuds jusqu'à n'en avoir qu'un(fusionnés dans un nouveau nœud parent dont la fréquence est la somme des deux)
         while len(heap) > 1:
             # Extraire les 2 nœuds de plus petite fréquence
             gauche = heapq.heappop(heap)
